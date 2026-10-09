@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Compétences techniques et transversales d'Alexandre Codeco Cerqueira, étudiant en BTS SIO SLAM.">
+  <title>Compétences | Alexandre Codeco Cerqueira</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="container nav" aria-label="Navigation principale">
+      <a href="index.html" class="logo">Portfolio</a>
+
+      <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="competences.html" aria-current="page">Compétences</a></li>
+        <li><a href="projets.html">Projets</a></li>
+        <li><a href="veille.html">Veille</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container page">
+    <section class="page-head reveal">
+      <p class="eyebrow">&gt; ce que je sais faire</p>
+      <h1 class="gradient-text">Compétences</h1>
+    </section>
+
+    <!-- Compétences techniques, regroupées par catégorie (comme sur le CV) -->
+    <section class="reveal">
+      <h2 class="section-title">Compétences techniques</h2>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Langages</h3>
+          <ul class="tag-list">
+            <li class="tag">HTML</li>
+            <li class="tag">CSS</li>
+            <li class="tag">PHP</li>
+            <li class="tag">C</li>
+            <li class="tag">C#</li>
+            <li class="tag">SQL</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>Bases de données / SGBD</h3>
+          <ul class="tag-list">
+            <li class="tag">MySQL</li>
+            <li class="tag">MariaDB</li>
+            <li class="tag">HeidiSQL</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>Outils / environnement de développement</h3>
+          <ul class="tag-list">
+            <li class="tag">Visual Studio Code</li>
+            <li class="tag">Visual Studio</li>
+            <li class="tag">Laragon</li>
+            <li class="tag">Git / GitHub</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h3>Systèmes et réseaux</h3>
+          <ul class="tag-list">
+            <li class="tag">Virtualisation VMware</li>
+            <li class="tag">Administration Windows</li>
+            <li class="tag">Administration Server / Linux</li>
+            <li class="tag">Maintenance matérielle Cisco</li>
+            <li class="tag">Réseaux (VLAN, routage, Wi-Fi)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Compétences transversales -->
+    <section class="reveal">
+      <h2 class="section-title">Compétences transversales</h2>
+      <ul class="tag-list">
+        <li class="tag">Curieux</li>
+        <li class="tag">Sérieux</li>
+        <li class="tag">Organisé</li>
+        <li class="tag">Autonome</li>
+        <li class="tag">Ponctuel</li>
+        <!-- TODO : ajoute "travail en équipe", "communication", "gestion de projet" si tu as
+             des exemples concrets issus de tes projets ou de ton stage pour les illustrer -->
+      </ul>
+    </section>
+
+    <!-- Langues -->
+    <section class="reveal">
+      <h2 class="section-title">Langues</h2>
+      <ul class="tag-list">
+        <li class="tag">Français - langue maternelle</li>
+        <li class="tag">Anglais - niveau B1-B2</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>2026 © Alexandre Codeco Cerqueira - BTS SIO SLAM</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,11 +1,79 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mon Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio d'Alex NOM, étudiant en BTS SIO option SLAM (développement d'applications).">
+  <title>Alex NOM | Portfolio BTS SIO SLAM</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<h1>HELLO WORLD</h1>
+
+  <!-- Fond animé (entièrement en CSS) -->
+  <div class="bg" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+  </div>
+
+  <!-- En-tête + menu -->
+  <header class="site-header">
+    <nav class="container nav" aria-label="Navigation principale">
+      <a href="index.html" class="logo">Portfolio</a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" aria-current="page">Accueil</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+        <li><a href="projets.html">Projets</a></li>
+        <li><a href="veille.html">Veille</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contenu principal -->
+  <main class="container hero">
+    <section class="hero-text">
+      <p class="eyebrow">&gt; bonjour, je suis</p>
+      <h1 class="gradient-text">Alex NOM</h1>
+      <p class="role"><span class="typed">Étudiant BTS SIO option SLAM</span></p>
+      <p class="intro">
+        Étudiant en 2<sup>e</sup> année de BTS SIO option SLAM, je conçois des applications web
+        et j'aime transformer un besoin concret en outil qui fonctionne.
+      </p>
+      <div class="hero-actions">
+        <a href="projets.html" class="btn">Voir mes projets</a>
+        <a href="contact.html" class="btn">Me contacter</a>
+      </div>
+    </section>
+
+    <aside class="code-card" aria-label="Aperçu du profil sous forme de code">
+      <div class="code-card-bar">
+        <span class="dots"><i></i><i></i><i></i></span>
+        <span class="code-card-title">profil.js</span>
+      </div>
+<pre><code><span class="c-key">const</span> <span class="c-var">profil</span> = {
+  <span class="c-prop">nom</span>: <span class="c-str">"Alex NOM"</span>,
+  <span class="c-prop">formation</span>: <span class="c-str">"BTS SIO - option SLAM"</span>,
+  <span class="c-prop">stage</span>: <span class="c-str">"Mairie de Saint-Claude"</span>,
+  <span class="c-prop">competences</span>: [<span class="c-str">"HTML"</span>, <span class="c-str">"CSS"</span>, <span class="c-str">"PHP"</span>,
+                <span class="c-str">"MySQL"</span>, <span class="c-str">"Git"</span>],
+  <span class="c-prop">projets</span>: [<span class="c-str">"GestConges"</span>, <span class="c-str">"GestInter"</span>,
+            <span class="c-str">"GestMateriel"</span>],
+  <span class="c-prop">disponible</span>: <span class="c-bool">true</span>
+};</code></pre>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <p>2026 © Alex NOM - BTS SIO SLAM</p>
+  </footer>
+
 </body>
 </html>
