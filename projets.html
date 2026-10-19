@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projets réalisés par Alexandre Codeco Cerqueira en stage de BTS SIO SLAM : GestConges, GestInter, GestMateriel.">
+  <title>Projets | Alexandre Codeco Cerqueira</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="container nav" aria-label="Navigation principale">
+      <a href="index.html" class="logo">Portfolio</a>
+
+      <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+        <li><a href="projets.html" aria-current="page">Projets</a></li>
+        <li><a href="veille.html">Veille</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container page">
+    <section class="page-head reveal">
+      <p class="eyebrow">&gt; ce que j'ai développé</p>
+      <h1 class="gradient-text">Projets</h1>
+      <p class="muted-text">
+        Trois applications web développées de A à Z durant mon stage de 1<sup>re</sup> année de BTS,
+        au service informatique de la Mairie de Saint-Claude.
+      </p>
+    </section>
+
+    <!-- ===================== GestConges ===================== -->
+    <article class="project-card reveal" id="gestconges">
+      <div class="project-head">
+        <h2>GestConges</h2>
+        <ul class="tag-list">
+          <li class="tag">PHP</li>
+          <li class="tag">MySQL</li>
+          <li class="tag">FullCalendar</li>
+        </ul>
+      </div>
+
+      <p class="project-lead">
+        Application de gestion des congés pour les agents de la mairie, avec plusieurs niveaux
+        de validation. Le projet le plus complexe des trois, et le dernier réalisé.
+      </p>
+
+      <div class="project-grid">
+        <div>
+          <h3>Contexte &amp; objectifs</h3>
+          <p>
+            Le service avait besoin d'un outil pour centraliser les demandes de congés et leur
+            validation, en remplacement d'un suivi papier ou tableur. L'objectif était un système
+            multi-rôles, du dépôt de la demande par l'agent jusqu'à la validation finale.
+          </p>
+        </div>
+
+        <div>
+          <h3>Technologies utilisées</h3>
+          <p>
+            PHP natif et MySQL, avec FullCalendar pour l'affichage du calendrier des congés.
+            Accès à la base via une fonction <code>getDB()</code> centralisée et une configuration
+            par constante <code>APP_URL</code>. Application hébergée sur le réseau interne de la mairie.
+          </p>
+        </div>
+
+        <div>
+          <h3>Difficultés rencontrées</h3>
+          <p>
+            Gérer 5 rôles différents (agent, responsable, RH, DGS, admin) avec un affichage et des
+            droits adaptés à chacun. Le calcul des congés en demi-journées a demandé plusieurs
+            itérations : une première version basée sur les heures s'est révélée trop complexe
+            à maintenir et a été remplacée.
+          </p>
+        </div>
+
+        <div>
+          <h3>Solutions apportées</h3>
+          <p>
+            Navigation et filtrage des données conditionnés par le rôle de l'utilisateur connecté.
+            Refonte du système de durée de congés sur la base de demi-journées, plus simple à
+            comprendre pour les utilisateurs et plus fiable à calculer.
+          </p>
+        </div>
+      </div>
+
+      <h3>Compétences développées</h3>
+      <ul class="tag-list">
+        <li class="tag">Conception de BDD multi-tables</li>
+        <li class="tag">Gestion de droits par rôle</li>
+        <li class="tag">Intégration d'une librairie JS (FullCalendar)</li>
+        <li class="tag">Débogage (sessions, affichage conditionnel)</li>
+      </ul>
+    </article>
+
+    <!-- ===================== GestInter ===================== -->
+    <article class="project-card reveal" id="gestinter">
+      <div class="project-head">
+        <h2>GestInter</h2>
+        <ul class="tag-list">
+          <li class="tag">PHP</li>
+          <li class="tag">MySQL</li>
+          <li class="tag">Bootstrap</li>
+        </ul>
+      </div>
+
+      <p class="project-lead">
+        Application de suivi des interventions techniques du service informatique.
+      </p>
+
+      <div class="project-grid">
+        <div>
+          <h3>Contexte &amp; objectifs</h3>
+          <p>
+            Le service avait besoin de tracer les interventions réalisées par les techniciens
+            (type d'intervention, matériel concerné, statut) pour garder un historique exploitable.
+          </p>
+        </div>
+
+        <div>
+          <h3>Technologies utilisées</h3>
+          <p>
+            PHP natif (sans framework), MySQL/MariaDB, Bootstrap pour l'interface. Développement
+            avec Laragon, HeidiSQL et VS Code. Déploiement sur une VM accessible depuis le réseau local.
+          </p>
+        </div>
+
+        <div>
+          <h3>Difficultés rencontrées</h3>
+          <p>
+            Sécuriser l'authentification des utilisateurs et faire fonctionner correctement
+            l'application une fois déployée sur le réseau local, et non plus en local sur mon poste.
+          </p>
+        </div>
+
+        <div>
+          <h3>Solutions apportées</h3>
+          <p>
+            Mise en place d'une authentification avec mots de passe hashés en bcrypt, et
+            configuration d'une constante d'URL adaptée à l'accès réseau. Déploiement sur la VM
+            via clé USB, avec une documentation Word pour expliquer l'installation.
+          </p>
+        </div>
+      </div>
+
+      <h3>Compétences développées</h3>
+      <ul class="tag-list">
+        <li class="tag">Authentification sécurisée (bcrypt)</li>
+        <li class="tag">Conception de BDD (5 tables)</li>
+        <li class="tag">Déploiement sur un réseau local</li>
+        <li class="tag">Rédaction de documentation technique</li>
+      </ul>
+    </article>
+
+    <!-- ===================== GestMateriel ===================== -->
+    <article class="project-card reveal" id="gestmateriel">
+      <div class="project-head">
+        <h2>GestMateriel</h2>
+        <ul class="tag-list">
+          <li class="tag">PHP</li>
+          <li class="tag">MySQL</li>
+          <li class="tag">Python</li>
+        </ul>
+      </div>
+
+      <p class="project-lead">
+        Application de gestion du parc informatique et des attributions de matériel aux agents.
+      </p>
+
+      <div class="project-grid">
+        <div>
+          <h3>Contexte &amp; objectifs</h3>
+          <p>
+            Le parc matériel de la mairie était suivi dans un fichier Excel. L'objectif était de
+            créer un outil web pour consulter et gérer l'inventaire et les attributions de matériel.
+          </p>
+        </div>
+
+        <div>
+          <h3>Technologies utilisées</h3>
+          <p>
+            PHP natif, MySQL/MariaDB pour une base à 3 tables. Un script Python avec la librairie
+            openpyxl a été écrit pour importer les données existantes depuis le fichier Excel.
+          </p>
+        </div>
+
+        <div>
+          <h3>Difficultés rencontrées</h3>
+          <p>
+            Reprendre proprement des données réelles déjà existantes (environ 193 matériels et
+            133 attributions) sans erreur ni doublon lors de l'import dans la base.
+          </p>
+        </div>
+
+        <div>
+          <h3>Solutions apportées</h3>
+          <p>
+            Script Python dédié à l'import, qui lit le fichier Excel et insère les données dans
+            la base MySQL. Application documentée avec un fichier Word, comme pour GestInter.
+          </p>
+        </div>
+      </div>
+
+      <h3>Compétences développées</h3>
+      <ul class="tag-list">
+        <li class="tag">Scripting Python (openpyxl)</li>
+        <li class="tag">Import / migration de données réelles</li>
+        <li class="tag">Conception de BDD (3 tables)</li>
+      </ul>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>2026 © Alexandre Codeco Cerqueira - BTS SIO SLAM</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
