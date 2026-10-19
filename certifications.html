@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Certifications d'Alexandre Codeco Cerqueira, étudiant en BTS SIO SLAM.">
+  <title>Certifications | Alexandre Codeco Cerqueira</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="container nav" aria-label="Navigation principale">
+      <a href="index.html" class="logo">Portfolio</a>
+
+      <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+        <li><a href="projets.html">Projets</a></li>
+        <li><a href="veille.html">Veille</a></li>
+        <li><a href="certifications.html" aria-current="page">Certifications</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container page">
+    <section class="page-head reveal">
+      <p class="eyebrow">&gt; ce qui est validé</p>
+      <h1 class="gradient-text">Certifications</h1>
+    </section>
+
+    <section class="reveal">
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-card-top">
+            <span class="cert-badge">PIX</span>
+            <!-- TODO : remplace XXX par ton score Pix (sur 1024) une fois connu -->
+            <span class="cert-score">XXX / 1024</span>
+          </div>
+          <h3>Certification Pix</h3>
+          <p>
+            Certification nationale des compétences numériques : information et données,
+            communication et collaboration, création de contenu, protection et sécurité,
+            environnement numérique.
+          </p>
+          <!-- TODO : remplace ce lien par le lien de vérification officiel de ton certificat Pix -->
+          <a href="#" class="btn btn-small">Voir le certificat</a>
+        </div>
+
+        <!-- TODO : si tu passes SecNumacadémie, Cisco, ou une autre certification plus tard,
+             duplique un bloc <div class="cert-card">...</div> comme celui-ci pour l'ajouter. -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>2026 © Alexandre Codeco Cerqueira - BTS SIO SLAM</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
