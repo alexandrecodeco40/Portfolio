@@ -6,6 +6,41 @@
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+/* ---------- 0. Écran de chargement ---------- */
+(function initLoader() {
+  const loader = document.getElementById("loader");
+  const fill = document.getElementById("loader-fill");
+  const pct = document.getElementById("loader-pct");
+  if (!loader || !fill || !pct) return;
+
+  if (prefersReducedMotion) {
+    loader.classList.add("is-hidden");
+    return;
+  }
+
+  document.body.style.overflow = "hidden";
+
+  let value = 0;
+
+  function tick() {
+    // avance plus vite au début, ralentit en approchant de 100 (effet plus naturel)
+    const step = value < 70 ? Math.random() * 9 + 3 : Math.random() * 3 + 1;
+    value = Math.min(100, value + step);
+    fill.style.width = value + "%";
+    pct.textContent = Math.floor(value) + "%";
+
+    if (value < 100) {
+      setTimeout(tick, 90);
+    } else {
+      setTimeout(() => {
+        loader.classList.add("is-hidden");
+        document.body.style.overflow = "";
+      }, 250);
+    }
+  }
+  tick();
+})();
+
 /* ---------- 1. Menu mobile ---------- */
 (function initMenu() {
   const toggle = document.querySelector(".nav-toggle");

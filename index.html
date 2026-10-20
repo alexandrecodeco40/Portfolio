@@ -12,6 +12,22 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <!-- Écran de chargement affiché avant la page d'accueil -->
+  <div class="loader" id="loader" role="status" aria-label="Chargement du portfolio">
+    <span class="loader-corner loader-corner--tl" aria-hidden="true"></span>
+    <span class="loader-corner loader-corner--tr" aria-hidden="true"></span>
+    <span class="loader-corner loader-corner--bl" aria-hidden="true"></span>
+    <span class="loader-corner loader-corner--br" aria-hidden="true"></span>
+    <span class="loader-scanline" aria-hidden="true"></span>
+
+    <div class="loader-box">
+      <h2 class="loader-title glitch" data-text="PORTFOLIO">PORTFOLIO</h2>
+      <p class="loader-line">&gt; initialisation<span class="loader-dots" id="loader-dots"></span></p>
+      <div class="loader-bar"><div class="loader-fill" id="loader-fill"></div></div>
+      <p class="loader-pct" id="loader-pct">0%</p>
+    </div>
+  </div>
+
   <canvas id="bg-canvas" aria-hidden="true"></canvas>
   <div class="cursor-dot" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true"></div>
@@ -103,9 +119,9 @@
     </section>
 
     <section class="container stats reveal">
-      <div class="stat"><span class="stat-num">3</span><span class="stat-label">Projets</span></div>
-      <div class="stat"><span class="stat-num">6+</span><span class="stat-label">Technologies</span></div>
-      <div class="stat"><span class="stat-num">1</span><span class="stat-label">Certifications</span></div>
+      <div class="stat"><span class="stat-num">3</span><span class="stat-label">projets de stage</span></div>
+      <div class="stat"><span class="stat-num">6+</span><span class="stat-label">technologies</span></div>
+      <div class="stat"><span class="stat-num">2026</span><span class="stat-label">fin de BTS</span></div>
     </section>
   </main>
 

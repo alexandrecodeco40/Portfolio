@@ -38,6 +38,123 @@ a { color: inherit; text-decoration: none; }
   margin-inline: auto;
 }
 
+/* ---------- Écran de chargement (page d'accueil uniquement) ---------- */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* légèrement transparent : les particules du fond (canvas) se voient à travers */
+  background: rgba(7, 13, 26, 0.88);
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Coins façon interface "HUD" */
+.loader-corner {
+  position: absolute;
+  width: 36px; height: 36px;
+  border: 2px solid var(--cyan);
+  opacity: 0.6;
+}
+
+.loader-corner--tl { top: 28px; left: 28px; border-right: 0; border-bottom: 0; }
+.loader-corner--tr { top: 28px; right: 28px; border-left: 0; border-bottom: 0; }
+.loader-corner--bl { bottom: 28px; left: 28px; border-right: 0; border-top: 0; }
+.loader-corner--br { bottom: 28px; right: 28px; border-left: 0; border-top: 0; }
+
+/* Ligne de scan qui balaie l'écran de haut en bas */
+.loader-scanline {
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  box-shadow: 0 0 14px 2px rgba(34, 211, 238, 0.6);
+  animation: scanline-move 2.4s ease-in-out infinite;
+}
+
+@keyframes scanline-move {
+  0%   { top: 10%; opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { top: 90%; opacity: 0; }
+}
+
+/* Titre "PORTFOLIO" avec glitch permanent pendant le chargement */
+.loader-title {
+  margin: 0 0 1.4rem;
+  font-size: clamp(1.8rem, 6vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  background: linear-gradient(90deg, var(--violet), var(--blue) 55%, var(--cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.loader-title.glitch::before,
+.loader-title.glitch::after {
+  opacity: 0.8;
+  animation: glitch-move 2.6s steps(2, end) infinite;
+}
+
+.loader-title.glitch::after { animation-direction: reverse; animation-duration: 2.1s; }
+
+.loader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-box { width: min(320px, 80vw); text-align: center; }
+
+.loader-line {
+  margin: 0 0 1.2rem;
+  font-size: 0.95rem;
+  color: var(--cyan);
+  letter-spacing: 0.04em;
+}
+
+.loader-dots::after {
+  content: "";
+  animation: loader-dots 1.2s steps(4, end) infinite;
+}
+
+@keyframes loader-dots {
+  0%   { content: ""; }
+  25%  { content: "."; }
+  50%  { content: ".."; }
+  75%  { content: "..."; }
+  100% { content: ""; }
+}
+
+.loader-bar {
+  height: 4px;
+  background: rgba(34, 211, 238, 0.12);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.loader-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--violet), var(--blue), var(--cyan));
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.6);
+  transition: width 0.15s ease-out;
+}
+
+.loader-pct {
+  margin: 0.7rem 0 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader { display: none; }
+}
+
 /* ---------- Fond animé (canvas, rempli par main.js) ---------- */
 #bg-canvas {
   position: fixed;
