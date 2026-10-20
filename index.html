@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio d'Alex NOM, étudiant en BTS SIO option SLAM (développement d'applications).">
-  <title>Alexandre CODECO CERQUEIRA | Portfolio BTS SIO SLAM</title>
+  <meta name="description" content="Portfolio d'Alexandre Codeco Cerqueira, étudiant en BTS SIO option SLAM (développement d'applications).">
+  <title>Alexandre Codeco Cerqueira | Portfolio BTS SIO SLAM</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,19 +12,19 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
 
-  <!-- Fond animé (entièrement en CSS) -->
-  <div class="bg" aria-hidden="true">
-    <span class="orb orb-1"></span>
-    <span class="orb orb-2"></span>
-  </div>
-
-  <!-- En-tête + menu -->
   <header class="site-header">
     <nav class="container nav" aria-label="Navigation principale">
       <a href="index.html" class="logo">Portfolio</a>
 
-      <ul class="nav-links">
+      <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
         <li><a href="index.html" aria-current="page">Accueil</a></li>
         <li><a href="apropos.html">À propos</a></li>
         <li><a href="competences.html">Compétences</a></li>
@@ -37,43 +37,82 @@
     </nav>
   </header>
 
-  <!-- Contenu principal -->
-  <main class="container hero">
-    <section class="hero-text">
-      <p class="eyebrow">&gt; bonjour, je suis</p>
-      <h1 class="gradient-text">Alexandre CODECO CERQUEIRA</h1>
-      <p class="role"><span class="typed">Étudiant BTS SIO option SLAM</span></p>
-      <p class="intro">
-        Étudiant en 2<sup>e</sup> année de BTS SIO option SLAM, je conçois des applications web
-        et j'aime transformer un besoin concret en outil qui fonctionne.
-      </p>
-      <div class="hero-actions">
-        <a href="projets.html" class="btn">Voir mes projets</a>
-        <a href="contact.html" class="btn">Me contacter</a>
+  <main>
+    <section class="container hero">
+      <div class="hero-text reveal">
+        <p class="eyebrow">&gt; bonjour, je suis</p>
+        <h1 class="gradient-text glitch" data-text="Alexandre Codeco Cerqueira">Alexandre Codeco Cerqueira</h1>
+        <p class="role"><span id="typed"></span><span class="caret" aria-hidden="true">_</span></p>
+        <p class="intro">
+          Étudiant en 2<sup>e</sup> année de BTS SIO option SLAM, je conçois des applications web
+          et j'aime transformer un besoin concret en outil qui fonctionne.
+        </p>
+        <div class="hero-actions">
+          <a href="projets.html" class="btn">Voir mes projets</a>
+          <a href="contact.html" class="btn">Me contacter</a>
+        </div>
+
+        <!-- Icônes de réseaux : TODO remplace l'URL LinkedIn par ton vrai profil -->
+        <div class="social-row">
+          <a href="https://www.linkedin.com/in/alexandre-codeco-cerqueira-8b853b3ab/" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.8 0 0 .78 0 1.75v20.5C0 23.22.8 24 1.77 24h20.45C23.2 24 24 23.22 24 22.25V1.75C24 .78 23.2 0 22.22 0Z"/></svg>
+          </a>
+          <a href="https://github.com/alexandrecodeco40" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12.03c0 5.05 3.29 9.33 7.84 10.84.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.19.69-3.86-1.36-3.86-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.16.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.95.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.27-5.23-5.68 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.58.23 2.75.11 3.04.73.8 1.18 1.83 1.18 3.08 0 4.42-2.69 5.39-5.25 5.67.41.36.78 1.07.78 2.16 0 1.56-.01 2.81-.01 3.19 0 .3.21.66.79.55A10.53 10.53 0 0 0 23.5 12.03C23.5 5.73 18.27.5 12 .5Z"/></svg>
+          </a>
+          <a href="cv/CV_Alexandre_Codeco_Cerqueira.pdf" target="_blank" rel="noopener" class="social-icon" aria-label="CV (PDF)">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6Zm7 1.5L18.5 9H13V3.5ZM8 13h8v1.5H8V13Zm0 3h8v1.5H8V16Zm0-6h3v1.5H8V10Z"/></svg>
+          </a>
+          <a href="mailto:alexandrecodeco40@gmail.com" class="social-icon" aria-label="E-mail">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 4h20v16H2V4Zm2 2v.01L12 12l8-5.99V6H4Zm16 2.24-7.4 5.55a1 1 0 0 1-1.2 0L4 8.24V18h16V8.24Z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <aside class="code-card reveal" id="code-card" aria-label="Aperçu du profil sous forme de code">
+        <div class="code-card-bar">
+          <span class="dots"><i></i><i></i><i></i></span>
+          <span class="code-card-title">profil.js</span>
+        </div>
+<pre><code><span class="c-key">const</span> <span class="c-var">profil</span> = {
+  <span class="c-prop">nom</span>: <span class="c-str">"Alexandre Codeco Cerqueira"</span>,
+  <span class="c-prop">formation</span>: <span class="c-str">"BTS SIO - option SLAM"</span>,
+  <span class="c-prop">competences</span>: [<span class="c-str">"HTML"</span>, <span class="c-str">"CSS"</span>, <span class="c-str">"PHP"</span>,
+                <span class="c-str">"C"</span>, <span class="c-str">"C#"</span>, <span class="c-str">"SQL"</span>],
+  <span class="c-prop">outils</span>: [<span class="c-str">"VS Code"</span>, <span class="c-str">"Visual Studio"</span>,
+            <span class="c-str">"Laragon"</span>, <span class="c-str">"HeidiSQL"</span>,
+            <span class="c-str">"Git"</span>],
+  <span class="c-prop">disponible</span>: <span class="c-bool">true</span>
+};</code></pre>
+      </aside>
+    </section>
+
+    <div class="scroll-indicator" aria-hidden="true">
+      <span class="scroll-mouse"><span class="scroll-wheel"></span></span>
+    </div>
+
+    <!-- Écran "boot" façon vieux terminal, rempli ligne par ligne par main.js -->
+    <section class="container reveal">
+      <div class="boot-terminal" aria-label="Terminal de démarrage">
+        <div class="code-card-bar">
+          <span class="dots"><i></i><i></i><i></i></span>
+          <span class="code-card-title">boot.sh</span>
+        </div>
+        <pre class="boot-output" id="boot-output" aria-hidden="true"></pre>
       </div>
     </section>
 
-    <aside class="code-card" aria-label="Aperçu du profil sous forme de code">
-      <div class="code-card-bar">
-        <span class="dots"><i></i><i></i><i></i></span>
-        <span class="code-card-title">profil.js</span>
-      </div>
-<pre><code><span class="c-key">const</span> <span class="c-var">profil</span> = {
-  <span class="c-prop">nom</span>: <span class="c-str">"Alexandre CODECO CERQUEIRA"</span>,
-  <span class="c-prop">formation</span>: <span class="c-str">"BTS SIO - option SLAM"</span>,
-  <span class="c-prop">stage</span>: <span class="c-str">"Mairie de Saint-Claude"</span>,
-  <span class="c-prop">competences</span>: [<span class="c-str">"HTML"</span>, <span class="c-str">"CSS"</span>, <span class="c-str">"PHP"</span>,
-                <span class="c-str">"MySQL"</span>, <span class="c-str">"Git"</span>],
-  <span class="c-prop">projets</span>: [<span class="c-str">"GestConges"</span>, <span class="c-str">"GestInter"</span>,
-            <span class="c-str">"GestMateriel"</span>],
-  <span class="c-prop">disponible</span>: <span class="c-bool">true</span>
-};</code></pre>
-    </aside>
+    <section class="container stats reveal">
+      <div class="stat"><span class="stat-num">3</span><span class="stat-label">Projets</span></div>
+      <div class="stat"><span class="stat-num">6+</span><span class="stat-label">Technologies</span></div>
+      <div class="stat"><span class="stat-num">1</span><span class="stat-label">Certifications</span></div>
+    </section>
   </main>
 
   <footer class="site-footer">
-    <p>2026 © Alexandre CODECO CERQUEIRA - BTS SIO SLAM</p>
+    <p>2026 © Alexandre Codeco Cerqueira - BTS SIO SLAM</p>
   </footer>
 
+  <script src="js/main.js"></script>
 </body>
 </html>

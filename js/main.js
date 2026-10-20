@@ -64,6 +64,64 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
   tick();
 })();
 
+/* ---------- 2bis. Terminal de boot (tape plusieurs lignes au chargement) ---------- */
+(function initBootTerminal() {
+  const el = document.getElementById("boot-output");
+  if (!el) return;
+
+  const lines = [
+    "$ whoami",
+    "alexandre.codeco-cerqueira",
+    "$ cat formation.txt",
+    "BTS SIO - option SLAM (2e année)",
+    "$ ls competences/",
+    "html css php c csharp sql",
+    "$ ./lancer-portfolio.sh",
+    "Chargement du profil... OK",
+  ];
+
+  if (prefersReducedMotion) {
+    el.textContent = lines.join("\n");
+    return;
+  }
+
+  let li = 0, ci = 0;
+  let buffer = "";
+
+  function typeNextChar() {
+    if (li >= lines.length) return;
+    const line = lines[li];
+
+    if (ci < line.length) {
+      buffer += line[ci];
+      ci++;
+      el.textContent = buffer;
+      setTimeout(typeNextChar, 18 + Math.random() * 22);
+    } else {
+      buffer += "\n";
+      li++;
+      ci = 0;
+      el.textContent = buffer;
+      setTimeout(typeNextChar, 260);
+    }
+  }
+
+  // On démarre l'effet uniquement quand le bloc devient visible à l'écran
+  if ("IntersectionObserver" in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          typeNextChar();
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    obs.observe(el);
+  } else {
+    typeNextChar();
+  }
+})();
+
 /* ---------- 3. Curseur personnalisé (souris uniquement) ---------- */
 (function initCursor() {
   const canFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
