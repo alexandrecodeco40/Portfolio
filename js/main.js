@@ -6,17 +6,29 @@
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* ---------- 0. Écran de chargement ---------- */
+/* ---------- 0. Écran de chargement (affiché une seule fois par session) ---------- */
 (function initLoader() {
   const loader = document.getElementById("loader");
   const fill = document.getElementById("loader-fill");
   const pct = document.getElementById("loader-pct");
   if (!loader || !fill || !pct) return;
 
-  if (prefersReducedMotion) {
+  // sessionStorage garde cette info tant que l'onglet reste ouvert.
+  // Si on a déjà vu le chargement pendant cette visite, on ne le rejoue pas.
+  const ALREADY_SHOWN_KEY = "portfolio_loader_shown";
+  let alreadyShown = false;
+  try {
+    alreadyShown = sessionStorage.getItem(ALREADY_SHOWN_KEY) === "1";
+  } catch (e) {
+    // navigation privée ou stockage bloqué : on rejoue l'animation à chaque fois, sans planter
+  }
+
+  if (alreadyShown || prefersReducedMotion) {
     loader.classList.add("is-hidden");
     return;
   }
+
+  try { sessionStorage.setItem(ALREADY_SHOWN_KEY, "1"); } catch (e) {}
 
   document.body.style.overflow = "hidden";
 
@@ -39,6 +51,40 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
     }
   }
   tick();
+})();
+
+/* ---------- 0bis. Constellation de compétences (clic sur un point) ---------- */
+(function initSkillConstellation() {
+  const nodes = document.querySelectorAll(".skill-node");
+  const infoTitle = document.getElementById("skill-info-title");
+  const infoDesc = document.getElementById("skill-info-desc");
+  if (!nodes.length || !infoTitle || !infoDesc) return;
+
+  const infoPanel = document.getElementById("skill-info");
+
+  function activate(node) {
+    nodes.forEach((n) => n.classList.remove("is-active"));
+    node.classList.add("is-active");
+    infoTitle.textContent = node.dataset.title || "";
+    infoDesc.textContent = node.dataset.desc || "";
+
+    if (infoPanel) {
+      infoPanel.scrollIntoView({
+        behavior: prefersReducedMotion ? "auto" : "smooth",
+        block: "center",
+      });
+    }
+  }
+
+  nodes.forEach((node) => {
+    node.addEventListener("click", () => activate(node));
+    node.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        activate(node);
+      }
+    });
+  });
 })();
 
 /* ---------- 1. Menu mobile ---------- */

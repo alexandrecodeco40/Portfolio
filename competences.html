@@ -43,52 +43,176 @@
       <h1 class="gradient-text">Compétences</h1>
     </section>
 
-    <!-- Compétences techniques, regroupées par catégorie (comme sur le CV) -->
+    <!-- Compétences techniques : constellation interactive. Clique sur un point pour voir son détail. -->
     <section class="reveal">
       <h2 class="section-title">Compétences techniques</h2>
+      <p class="muted-text">Clique sur un point de la constellation pour en savoir plus.</p>
 
-      <div class="skills-grid">
-        <div class="skill-card">
-          <h3>Langages</h3>
-          <ul class="tag-list">
-            <li class="tag">HTML</li>
-            <li class="tag">CSS</li>
-            <li class="tag">PHP</li>
-            <li class="tag">C</li>
-            <li class="tag">C#</li>
-            <li class="tag">SQL</li>
-          </ul>
-        </div>
+      <div class="constellation-wrap">
+        <svg class="constellation" viewBox="0 0 1100 820" role="group" aria-label="Carte des compétences techniques">
+          <defs>
+            <radialGradient id="gradCore" cx="35%" cy="32%" r="70%">
+              <stop offset="0%" stop-color="#e6edf7" stop-opacity="0.95"/>
+              <stop offset="45%" stop-color="#22d3ee" stop-opacity="0.55"/>
+              <stop offset="100%" stop-color="#22d3ee" stop-opacity="0.05"/>
+            </radialGradient>
+            <radialGradient id="gradCyan" cx="35%" cy="32%" r="70%">
+              <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#22d3ee" stop-opacity="0.05"/>
+            </radialGradient>
+            <radialGradient id="gradViolet" cx="35%" cy="32%" r="70%">
+              <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#a78bfa" stop-opacity="0.05"/>
+            </radialGradient>
+            <radialGradient id="gradBlue" cx="35%" cy="32%" r="70%">
+              <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.05"/>
+            </radialGradient>
+          </defs>
 
-        <div class="skill-card">
-          <h3>Bases de données / SGBD</h3>
-          <ul class="tag-list">
-            <li class="tag">MySQL</li>
-            <li class="tag">MariaDB</li>
-            <li class="tag">HeidiSQL</li>
-          </ul>
-        </div>
+          <!-- Traits reliant le centre aux 3 familles, puis chaque famille à ses compétences -->
+          <g class="constellation-edges">
+            <line class="edge edge-core" x1="550" y1="380" x2="230" y2="230"></line>
+            <line class="edge edge-core" x1="550" y1="380" x2="870" y2="230"></line>
+            <line class="edge edge-core" x1="550" y1="380" x2="550" y2="650"></line>
 
-        <div class="skill-card">
-          <h3>Outils / environnement de développement</h3>
-          <ul class="tag-list">
-            <li class="tag">Visual Studio Code</li>
-            <li class="tag">Visual Studio</li>
-            <li class="tag">Laragon</li>
-            <li class="tag">Git / GitHub</li>
-          </ul>
-        </div>
+            <!-- Langages -->
+            <line class="edge edge-lang" x1="230" y1="230" x2="256" y2="82"></line>
+            <line class="edge edge-lang" x1="230" y1="230" x2="160" y2="98"></line>
+            <line class="edge edge-lang" x1="230" y1="230" x2="93"  y2="169"></line>
+            <line class="edge edge-lang" x1="230" y1="230" x2="85"  y2="266"></line>
+            <line class="edge edge-lang" x1="230" y1="230" x2="138" y2="348"></line>
+            <line class="edge edge-lang" x1="230" y1="230" x2="230" y2="380"></line>
 
-        <div class="skill-card">
-          <h3>Systèmes et réseaux</h3>
-          <ul class="tag-list">
-            <li class="tag">Virtualisation VMware</li>
-            <li class="tag">Administration Windows</li>
-            <li class="tag">Administration Server / Linux</li>
-            <li class="tag">Maintenance matérielle Cisco</li>
-            <li class="tag">Réseaux (VLAN, routage, Wi-Fi)</li>
-          </ul>
-        </div>
+            <!-- Bases de données -->
+            <line class="edge edge-bdd" x1="870" y1="230" x2="844"  y2="82"></line>
+            <line class="edge edge-bdd" x1="870" y1="230" x2="940"  y2="98"></line>
+            <line class="edge edge-bdd" x1="870" y1="230" x2="1007" y2="169"></line>
+
+            <!-- Outils -->
+            <line class="edge edge-outils" x1="550" y1="650" x2="411" y2="662"></line>
+            <line class="edge edge-outils" x1="550" y1="650" x2="484" y2="774"></line>
+            <line class="edge edge-outils" x1="550" y1="650" x2="616" y2="774"></line>
+            <line class="edge edge-outils" x1="550" y1="650" x2="690" y2="662"></line>
+          </g>
+
+          <!-- Centre -->
+          <g class="skill-node skill-node--core" tabindex="0" role="button"
+             data-title="Compétences techniques"
+             data-desc="L'ensemble des langages, bases de données et outils que j'utilise pour développer des applications web, acquis en cours et pendant mon stage."
+             transform="translate(550,380)">
+            <circle class="orbit-ring" r="58"></circle>
+            <circle class="node-core" r="38" fill="url(#gradCore)"></circle>
+            <text class="skill-label skill-label--lg" y="64">Dev</text>
+          </g>
+
+          <!-- Hub Langages -->
+          <g class="skill-node skill-node--hub skill-node--lang" tabindex="0" role="button"
+             data-title="Langages"
+             data-desc="Les langages de programmation que j'ai appris et pratiqués durant ma formation et mon stage."
+             transform="translate(230,230)">
+            <circle class="orbit-ring" r="46"></circle>
+            <circle r="29" fill="url(#gradCyan)"></circle>
+            <text class="skill-label skill-label--lg" y="52">Langages</text>
+          </g>
+
+          <!-- Hub BDD -->
+          <g class="skill-node skill-node--hub skill-node--bdd" tabindex="0" role="button"
+             data-title="Bases de données / SGBD"
+             data-desc="Les systèmes de gestion de bases de données utilisés pour stocker et interroger les données de mes applications."
+             transform="translate(870,230)">
+            <circle class="orbit-ring" r="46"></circle>
+            <circle r="29" fill="url(#gradViolet)"></circle>
+            <text class="skill-label skill-label--lg" y="52">Bases de données</text>
+          </g>
+
+          <!-- Hub Outils -->
+          <g class="skill-node skill-node--hub skill-node--outils" tabindex="0" role="button"
+             data-title="Outils"
+             data-desc="Les logiciels et environnements que j'utilise au quotidien pour développer, versionner et déployer mes projets."
+             transform="translate(550,650)">
+            <circle class="orbit-ring" r="46"></circle>
+            <circle r="29" fill="url(#gradBlue)"></circle>
+            <text class="skill-label skill-label--lg" y="52">Outils</text>
+          </g>
+
+          <!-- Nœuds Langages -->
+          <g class="skill-node skill-node--lang" tabindex="0" role="button" data-title="HTML"
+             data-desc="HTML est le langage qui structure le contenu d'une page web : titres, paragraphes, images, liens. C'est la toute première brique de ce portfolio."
+             transform="translate(256,82)">
+            <circle r="20" fill="url(#gradCyan)"></circle><text class="skill-label" y="36">HTML</text>
+          </g>
+          <g class="skill-node skill-node--lang" tabindex="0" role="button" data-title="PHP"
+             data-desc="PHP est un langage côté serveur qui permet de générer des pages dynamiques et de dialoguer avec une base de données. C'est le langage principal de mes 3 projets de stage."
+             transform="translate(160,98)">
+            <circle r="20" fill="url(#gradCyan)"></circle><text class="skill-label" y="36">PHP</text>
+          </g>
+          <g class="skill-node skill-node--lang" tabindex="0" role="button" data-title="C"
+             data-desc="Le C est un langage bas niveau étudié en cours, utile pour comprendre en profondeur la mémoire et les algorithmes."
+             transform="translate(93,169)">
+            <circle r="20" fill="url(#gradCyan)"></circle><text class="skill-label" y="36">C</text>
+          </g>
+          <g class="skill-node skill-node--lang" tabindex="0" role="button" data-title="CSS"
+             data-desc="CSS permet de mettre en forme une page HTML : couleurs, polices, mise en page, responsive. C'est ce qui donne au portfolio son identité visuelle."
+             transform="translate(85,266)">
+            <circle r="20" fill="url(#gradCyan)"></circle><text class="skill-label" y="36">CSS</text>
+          </g>
+          <g class="skill-node skill-node--lang" tabindex="0" role="button" data-title="SQL"
+             data-desc="SQL est le langage utilisé pour interroger et manipuler une base de données relationnelle. Je l'utilise avec MySQL/MariaDB sur mes 3 projets de stage."
+             transform="translate(138,348)">
+            <circle r="20" fill="url(#gradCyan)"></circle><text class="skill-label" y="36">SQL</text>
+          </g>
+          <g class="skill-node skill-node--lang" tabindex="0" role="button" data-title="C#"
+             data-desc="Le C# est un langage orienté objet, étudié en BTS notamment avec Visual Studio pour développer des applications."
+             transform="translate(230,380)">
+            <circle r="20" fill="url(#gradCyan)"></circle><text class="skill-label" y="36">C#</text>
+          </g>
+
+          <!-- Nœuds Bases de données -->
+          <g class="skill-node skill-node--bdd" tabindex="0" role="button" data-title="MySQL"
+             data-desc="Système de gestion de base de données relationnelle que j'ai utilisé pour stocker les données de mes applications PHP développées en stage."
+             transform="translate(844,82)">
+            <circle r="20" fill="url(#gradViolet)"></circle><text class="skill-label" y="36">MySQL</text>
+          </g>
+          <g class="skill-node skill-node--bdd" tabindex="0" role="button" data-title="MariaDB"
+             data-desc="Une alternative compatible à MySQL, utilisée sur les serveurs de la mairie pour héberger les bases de données de mes projets."
+             transform="translate(940,98)">
+            <circle r="20" fill="url(#gradViolet)"></circle><text class="skill-label" y="36">MariaDB</text>
+          </g>
+          <g class="skill-node skill-node--bdd" tabindex="0" role="button" data-title="HeidiSQL"
+             data-desc="Un outil graphique pour visualiser et modifier facilement une base MySQL/MariaDB, sans écrire toutes les requêtes à la main."
+             transform="translate(1007,169)">
+            <circle r="20" fill="url(#gradViolet)"></circle><text class="skill-label" y="36">HeidiSQL</text>
+          </g>
+
+          <!-- Nœuds Outils -->
+          <g class="skill-node skill-node--outils" tabindex="0" role="button" data-title="VS Code"
+             data-desc="Mon éditeur de code principal au quotidien, pour écrire du HTML, du CSS, du PHP et bien d'autres langages."
+             transform="translate(411,662)">
+            <circle r="20" fill="url(#gradBlue)"></circle><text class="skill-label" y="36">VS Code</text>
+          </g>
+          <g class="skill-node skill-node--outils" tabindex="0" role="button" data-title="Laragon"
+             data-desc="Un environnement de développement local qui permet de lancer facilement un serveur PHP et une base MySQL sur mon ordinateur."
+             transform="translate(484,774)">
+            <circle r="20" fill="url(#gradBlue)"></circle><text class="skill-label" y="36">Laragon</text>
+          </g>
+          <g class="skill-node skill-node--outils" tabindex="0" role="button" data-title="Git / GitHub"
+             data-desc="Git me permet de suivre l'historique de mes projets, et GitHub d'héberger mon code en ligne — c'est d'ailleurs ce qui héberge ce portfolio."
+             transform="translate(616,774)">
+            <circle r="20" fill="url(#gradBlue)"></circle><text class="skill-label" y="36">Git / GitHub</text>
+          </g>
+          <g class="skill-node skill-node--outils" tabindex="0" role="button" data-title="Visual Studio"
+             data-desc="Un environnement de développement plus complet, utilisé notamment pour programmer en C#."
+             transform="translate(690,662)">
+            <circle r="20" fill="url(#gradBlue)"></circle><text class="skill-label" y="36">Visual Studio</text>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Panneau qui affiche le détail du point cliqué -->
+      <div class="skill-info" id="skill-info">
+        <h3 id="skill-info-title">Clique sur un point</h3>
+        <p id="skill-info-desc">Chaque point de la constellation correspond à une compétence. Clique (ou appuie sur Entrée) dessus pour afficher son détail ici.</p>
       </div>
     </section>
 
@@ -96,11 +220,11 @@
     <section class="reveal">
       <h2 class="section-title">Compétences transversales</h2>
       <ul class="tag-list">
-        <li class="tag">Curieux</li>
-        <li class="tag">Sérieux</li>
-        <li class="tag">Organisé</li>
-        <li class="tag">Autonome</li>
-        <li class="tag">Ponctuel</li>
+        <li class="tag">Virtualisation VMware</li>
+        <li class="tag">Administration Windows</li>
+        <li class="tag">Administration Server / Linux</li>
+        <li class="tag">Maintenance matérielle Cisco</li>
+        <li class="tag">Réseaux (VLAN, routage, Wi-Fi)</li>
         <!-- TODO : ajoute "travail en équipe", "communication", "gestion de projet" si tu as
              des exemples concrets issus de tes projets ou de ton stage pour les illustrer -->
       </ul>

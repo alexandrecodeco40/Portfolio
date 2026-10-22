@@ -514,6 +514,154 @@ a { color: inherit; text-decoration: none; }
 .interest-card a { color: var(--cyan); }
 .interest-card a:hover { text-decoration: underline; }
 
+/* ---------- Constellation de compétences (page Compétences) ---------- */
+.constellation-wrap {
+  position: relative;
+  background:
+    radial-gradient(600px 400px at 20% 10%, rgba(167, 139, 250, 0.06), transparent 60%),
+    radial-gradient(600px 400px at 85% 15%, rgba(34, 211, 238, 0.06), transparent 60%),
+    var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.5rem;
+  overflow: hidden;
+}
+
+.constellation {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Traits : chaque branche a la couleur de sa famille */
+.edge {
+  stroke-width: 1.4;
+  fill: none;
+}
+
+.edge-core   { stroke: rgba(230, 237, 247, 0.35); stroke-width: 1.8; }
+.edge-lang   { stroke: rgba(34, 211, 238, 0.4); }
+.edge-bdd    { stroke: rgba(167, 139, 250, 0.4); }
+.edge-outils { stroke: rgba(96, 165, 250, 0.4); }
+
+/* Anneaux en orbite autour du centre et des hubs, qui tournent lentement */
+.orbit-ring {
+  fill: none;
+  stroke-width: 1;
+  stroke-dasharray: 3 7;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.skill-node--lang .orbit-ring   { stroke: rgba(34, 211, 238, 0.45); }
+.skill-node--bdd .orbit-ring    { stroke: rgba(167, 139, 250, 0.45); }
+.skill-node--outils .orbit-ring { stroke: rgba(96, 165, 250, 0.45); }
+.skill-node--core .orbit-ring   { stroke: rgba(230, 237, 247, 0.45); }
+
+.skill-node--hub .orbit-ring,
+.skill-node--core .orbit-ring {
+  animation: orbit-spin 14s linear infinite;
+}
+
+@keyframes orbit-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Nœuds : groupe cliquable (pas de scale au survol : ça faisait "sauter" le point) */
+.skill-node {
+  cursor: pointer;
+  outline: none;
+}
+
+.skill-node circle:not(.orbit-ring) {
+  stroke-width: 1.5;
+  transition: filter 0.25s, stroke-width 0.25s;
+}
+
+.skill-node--lang circle:not(.orbit-ring)   { stroke: var(--cyan); }
+.skill-node--bdd circle:not(.orbit-ring)    { stroke: var(--violet); }
+.skill-node--outils circle:not(.orbit-ring) { stroke: var(--blue); }
+.skill-node--core circle:not(.orbit-ring)   { stroke: var(--text); stroke-width: 1; }
+
+.skill-label {
+  fill: var(--muted);
+  font-family: var(--font);
+  font-size: 15px;
+  text-anchor: middle;
+  pointer-events: none;
+  user-select: none;
+  transition: fill 0.2s;
+}
+
+.skill-label--lg {
+  fill: var(--text);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+/* --- Survol / focus : le nœud s'illumine (pas de changement de taille) --- */
+.skill-node--lang:hover circle:not(.orbit-ring),
+.skill-node--lang:focus-visible circle:not(.orbit-ring) {
+  filter: drop-shadow(0 0 16px rgba(34, 211, 238, 0.85));
+}
+.skill-node--bdd:hover circle:not(.orbit-ring),
+.skill-node--bdd:focus-visible circle:not(.orbit-ring) {
+  filter: drop-shadow(0 0 16px rgba(167, 139, 250, 0.85));
+}
+.skill-node--outils:hover circle:not(.orbit-ring),
+.skill-node--outils:focus-visible circle:not(.orbit-ring) {
+  filter: drop-shadow(0 0 16px rgba(96, 165, 250, 0.85));
+}
+.skill-node--core:hover circle:not(.orbit-ring),
+.skill-node--core:focus-visible circle:not(.orbit-ring) {
+  filter: drop-shadow(0 0 20px rgba(230, 237, 247, 0.85));
+}
+
+.skill-node:hover .skill-label,
+.skill-node:focus-visible .skill-label { fill: var(--text); }
+
+/* --- Sélectionné (après un clic) : halo permanent, pas de changement de taille --- */
+.skill-node--lang.is-active circle:not(.orbit-ring)   { filter: drop-shadow(0 0 18px rgba(34, 211, 238, 0.95)); stroke-width: 2.5; }
+.skill-node--bdd.is-active circle:not(.orbit-ring)    { filter: drop-shadow(0 0 18px rgba(167, 139, 250, 0.95)); stroke-width: 2.5; }
+.skill-node--outils.is-active circle:not(.orbit-ring) { filter: drop-shadow(0 0 18px rgba(96, 165, 250, 0.95)); stroke-width: 2.5; }
+.skill-node--core.is-active circle:not(.orbit-ring)   { filter: drop-shadow(0 0 22px rgba(230, 237, 247, 0.95)); stroke-width: 2; }
+
+.skill-node.is-active .skill-label { fill: var(--text); font-weight: 700; }
+
+/* Respiration lente du centre et des hubs, pour un effet "vivant" */
+.skill-node--core .node-core,
+.skill-node--hub circle:not(.orbit-ring) {
+  animation: breathe 3.6s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.25)); }
+  50% { filter: drop-shadow(0 0 16px rgba(34, 211, 238, 0.5)); }
+}
+
+/* Panneau de détail sous la constellation */
+.skill-info {
+  margin-top: 1.5rem;
+  padding: 1.4rem 1.6rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  min-height: 5.5rem;
+}
+
+.skill-info h3 { margin: 0 0 0.5rem; color: var(--cyan); font-size: 1.05rem; }
+.skill-info p { margin: 0; color: var(--text); max-width: 46rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-ring, .skill-node--core .node-core, .skill-node--hub circle:not(.orbit-ring) { animation: none; }
+  .skill-node { transition: none; }
+}
+
+@media (max-width: 640px) {
+  .skill-label { font-size: 19px; }
+  .skill-label--lg { font-size: 21px; }
+}
+
 /* ---------- Cartes de compétences (grille) ---------- */
 .skills-grid {
   display: grid;
