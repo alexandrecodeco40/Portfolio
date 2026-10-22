@@ -23,14 +23,17 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
     // navigation privée ou stockage bloqué : on rejoue l'animation à chaque fois, sans planter
   }
 
-  function finishLoading() {
+  function finishLoading(animated) {
     loader.classList.add("is-hidden");
     document.body.style.overflow = "";
-    document.dispatchEvent(new CustomEvent("portfolio:loaderDone"));
+    // "animated: true" seulement quand le loader vient vraiment de jouer son animation.
+    // Les autres pages / visites suivantes passent "animated: false" pour ne pas
+    // relancer la frappe progressive de la carte profil.js.
+    document.dispatchEvent(new CustomEvent("portfolio:loaderDone", { detail: { animated } }));
   }
 
   if (alreadyShown || prefersReducedMotion) {
-    finishLoading();
+    finishLoading(false);
     return;
   }
 
@@ -50,7 +53,7 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
     if (value < 100) {
       setTimeout(tick, 90);
     } else {
-      setTimeout(finishLoading, 250);
+      setTimeout(() => finishLoading(true), 250);
     }
   }
   tick();
@@ -61,7 +64,7 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
   const codeEl = document.getElementById("profil-code");
   if (!codeEl) return;
 
-  const TOTAL_DURATION_MS = 12000; // ~12 secondes, dans la fourchette 10-15s demandée
+  const TOTAL_DURATION_MS = 8000; // ~8 secondes
 
   // On transforme l'arbre HTML original (texte + <span class="c-xxx">) en une liste
   // d'étapes à rejouer une par une : ouvrir un span, taper un caractère, fermer un span.
@@ -77,16 +80,14 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
     });
   }
 
-  const steps = [];
-  buildSteps(codeEl, steps);
-
-  if (prefersReducedMotion) return; // le HTML original reste affiché tel quel
-
-  codeEl.innerHTML = "";
-  const charCount = steps.filter((s) => s.type === "char").length || 1;
-  const baseDelay = TOTAL_DURATION_MS / charCount;
-
   function play() {
+    const steps = [];
+    buildSteps(codeEl, steps); // on lit l'original AVANT de le vider
+    codeEl.innerHTML = "";
+
+    const charCount = steps.filter((s) => s.type === "char").length || 1;
+    const baseDelay = TOTAL_DURATION_MS / charCount;
+
     let stack = [codeEl];
     let i = 0;
 
@@ -116,7 +117,14 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
     step();
   }
 
-  document.addEventListener("portfolio:loaderDone", play, { once: true });
+  // On ne lance la frappe QUE si le loader vient vraiment de jouer son animation.
+  // Sinon (retour sur l'accueil après une autre page, loader déjà vu cette session),
+  // la carte reste affichée telle quelle, sans rien effacer ni retaper.
+  if (!prefersReducedMotion) {
+    document.addEventListener("portfolio:loaderDone", (e) => {
+      if (e.detail && e.detail.animated) play();
+    }, { once: true });
+  }
 })();
 
 /* ---------- 0bis. Constellation de compétences (clic sur un point) ---------- */
