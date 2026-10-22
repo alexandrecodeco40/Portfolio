@@ -23,8 +23,14 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
     // navigation privée ou stockage bloqué : on rejoue l'animation à chaque fois, sans planter
   }
 
-  if (alreadyShown || prefersReducedMotion) {
+  function finishLoading() {
     loader.classList.add("is-hidden");
+    document.body.style.overflow = "";
+    document.dispatchEvent(new CustomEvent("portfolio:loaderDone"));
+  }
+
+  if (alreadyShown || prefersReducedMotion) {
+    finishLoading();
     return;
   }
 
@@ -44,13 +50,73 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
     if (value < 100) {
       setTimeout(tick, 90);
     } else {
-      setTimeout(() => {
-        loader.classList.add("is-hidden");
-        document.body.style.overflow = "";
-      }, 250);
+      setTimeout(finishLoading, 250);
     }
   }
   tick();
+})();
+
+/* ---------- 0ter. Frappe progressive de la carte "profil.js" (après le chargement) ---------- */
+(function initCodeTyping() {
+  const codeEl = document.getElementById("profil-code");
+  if (!codeEl) return;
+
+  const TOTAL_DURATION_MS = 12000; // ~12 secondes, dans la fourchette 10-15s demandée
+
+  // On transforme l'arbre HTML original (texte + <span class="c-xxx">) en une liste
+  // d'étapes à rejouer une par une : ouvrir un span, taper un caractère, fermer un span.
+  function buildSteps(node, steps) {
+    node.childNodes.forEach((child) => {
+      if (child.nodeType === Node.TEXT_NODE) {
+        for (const ch of child.textContent) steps.push({ type: "char", char: ch });
+      } else if (child.nodeType === Node.ELEMENT_NODE) {
+        steps.push({ type: "open", className: child.className });
+        buildSteps(child, steps);
+        steps.push({ type: "close" });
+      }
+    });
+  }
+
+  const steps = [];
+  buildSteps(codeEl, steps);
+
+  if (prefersReducedMotion) return; // le HTML original reste affiché tel quel
+
+  codeEl.innerHTML = "";
+  const charCount = steps.filter((s) => s.type === "char").length || 1;
+  const baseDelay = TOTAL_DURATION_MS / charCount;
+
+  function play() {
+    let stack = [codeEl];
+    let i = 0;
+
+    function step() {
+      if (i >= steps.length) return;
+      const s = steps[i++];
+      const top = stack[stack.length - 1];
+
+      if (s.type === "open") {
+        const span = document.createElement("span");
+        span.className = s.className;
+        top.appendChild(span);
+        stack.push(span);
+        step(); // ouvrir un span ne "coûte" pas de temps de frappe
+        return;
+      }
+      if (s.type === "close") {
+        stack.pop();
+        step();
+        return;
+      }
+      // s.type === "char"
+      top.appendChild(document.createTextNode(s.char));
+      const jitter = baseDelay * (0.6 + Math.random() * 0.8); // léger effet naturel
+      setTimeout(step, jitter);
+    }
+    step();
+  }
+
+  document.addEventListener("portfolio:loaderDone", play, { once: true });
 })();
 
 /* ---------- 0bis. Constellation de compétences (clic sur un point) ---------- */
