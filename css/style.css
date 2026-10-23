@@ -682,6 +682,18 @@ a { color: inherit; text-decoration: none; }
   color: var(--cyan);
 }
 
+/* Capture d'écran en haut d'une carte (page Veille) */
+.skill-card-img {
+  display: block;
+  width: calc(100% + 2.8rem);
+  margin: -1.4rem -1.4rem 1.2rem;
+  border-bottom: 1px solid var(--border);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.skill-card p { margin: 0; color: var(--muted); }
+.skill-card p strong { color: var(--text); }
+
 /* ---------- Cartes de projet (page Projets) ---------- */
 .project-card {
   margin-bottom: 2.5rem;
@@ -729,6 +741,24 @@ a { color: inherit; text-decoration: none; }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
+}
+
+/* Carte mise en avant avec le vrai badge Pix (image) */
+.cert-card--featured {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.cert-score-badge {
+  flex: none;
+  width: 140px;
+  height: auto;
+}
+
+@media (max-width: 560px) {
+  .cert-card--featured { flex-direction: column; text-align: center; }
 }
 
 .cert-card {
