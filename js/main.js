@@ -161,6 +161,40 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
   });
 })();
 
+/* ---------- 0quater. Agrandissement des captures d'écran (page Projets) ---------- */
+(function initLightbox() {
+  const box = document.getElementById("lightbox");
+  const boxImg = document.getElementById("lightbox-img");
+  const closeBtn = document.getElementById("lightbox-close");
+  const thumbs = document.querySelectorAll("img[data-lightbox]");
+  if (!box || !boxImg || !thumbs.length) return;
+
+  function open(src, alt) {
+    boxImg.src = src;
+    boxImg.alt = alt || "";
+    box.hidden = false;
+    document.body.style.overflow = "hidden";
+  }
+
+  function close() {
+    box.hidden = true;
+    boxImg.src = "";
+    document.body.style.overflow = "";
+  }
+
+  thumbs.forEach((img) => {
+    img.addEventListener("click", () => open(img.src, img.alt));
+  });
+
+  // Un clic n'importe où (image, fond ou croix) referme la fenêtre
+  box.addEventListener("click", close);
+  if (closeBtn) closeBtn.addEventListener("click", close);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !box.hidden) close();
+  });
+})();
+
 /* ---------- 1. Menu mobile ---------- */
 (function initMenu() {
   const toggle = document.querySelector(".nav-toggle");

@@ -42,29 +42,146 @@
       <p class="eyebrow">&gt; ce que j'ai développé</p>
       <h1 class="gradient-text">Projets</h1>
       <p class="muted-text">
-        Trois applications web développées de A à Z durant mon stage de 1<sup>re</sup> année de BTS,
-        au service informatique de la Mairie de Saint-Claude.
+        Trois applications web développées de A à Z durant mon stage de 1<sup>re</sup> année de BTS SIO SLAM,
+        au service informatique de la Mairie de Saint-Claude (du 25 mai au 27 juin 2026).
+        Clique sur un projet pour le découvrir en détail.
       </p>
     </section>
 
-    <!-- ===================== GestConges ===================== -->
-    <article class="project-card reveal" id="gestconges">
-      <div class="project-head">
-        <h2>GestConges</h2>
-        <ul class="tag-list">
-          <li class="tag">PHP</li>
-          <li class="tag">MySQL</li>
-          <li class="tag">FullCalendar</li>
-        </ul>
+    <!-- ===================== Vue d'ensemble : 3 cartes cliquables ===================== -->
+    <section class="project-overview reveal">
+      <a class="overview-card" href="#gestconges">
+        <div class="overview-art overview-art--conges" aria-hidden="true">
+          <svg viewBox="0 0 320 180" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Calendrier -->
+            <rect x="95" y="40" width="130" height="100" rx="10" fill="rgba(34,211,238,0.06)" stroke="#22d3ee" stroke-width="2"/>
+            <path d="M95 50a10 10 0 0 1 10-10h110a10 10 0 0 1 10 10v14H95V50Z" fill="rgba(34,211,238,0.28)" stroke="#22d3ee" stroke-width="2"/>
+            <rect x="122" y="30" width="6" height="18" rx="3" fill="#22d3ee"/>
+            <rect x="192" y="30" width="6" height="18" rx="3" fill="#22d3ee"/>
+            <!-- Jours -->
+            <g stroke="rgba(230,237,247,0.25)" stroke-width="1.2">
+              <rect x="108" y="74" width="18" height="14" rx="3"/><rect x="130" y="74" width="18" height="14" rx="3" fill="rgba(34,211,238,0.5)" stroke="#22d3ee"/>
+              <rect x="152" y="74" width="18" height="14" rx="3" fill="rgba(34,211,238,0.5)" stroke="#22d3ee"/><rect x="174" y="74" width="18" height="14" rx="3"/>
+              <rect x="196" y="74" width="18" height="14" rx="3"/>
+              <rect x="108" y="94" width="18" height="14" rx="3"/><rect x="130" y="94" width="18" height="14" rx="3"/>
+              <rect x="152" y="94" width="18" height="14" rx="3"/><rect x="174" y="94" width="18" height="14" rx="3" fill="rgba(167,139,250,0.5)" stroke="#a78bfa"/>
+              <rect x="196" y="94" width="18" height="14" rx="3" fill="rgba(167,139,250,0.5)" stroke="#a78bfa"/>
+              <rect x="108" y="114" width="18" height="14" rx="3" stroke="#22d3ee"/><rect x="130" y="114" width="18" height="14" rx="3"/>
+              <rect x="152" y="114" width="18" height="14" rx="3"/><rect x="174" y="114" width="18" height="14" rx="3"/>
+            </g>
+            <!-- Pastille de validation -->
+            <circle cx="222" cy="136" r="17" fill="#070d1a" stroke="#22d3ee" stroke-width="2"/>
+            <path d="M214 136l6 6 10-12" stroke="#22d3ee" stroke-width="3"/>
+            <!-- Étincelles décoratives -->
+            <circle cx="60" cy="50" r="2.5" fill="#a78bfa"/><circle cx="268" cy="38" r="2" fill="#22d3ee"/>
+            <circle cx="262" cy="150" r="2.5" fill="#a78bfa"/><circle cx="52" cy="140" r="2" fill="#22d3ee"/>
+          </svg>
+        </div>
+        <div class="overview-body">
+          <span class="overview-num">01</span>
+          <h2>GestConges</h2>
+          <p>Gestion des congés, avec validation multi-niveaux.</p>
+          <ul class="tag-list"><li class="tag">PHP</li><li class="tag">MySQL</li><li class="tag">FullCalendar</li></ul>
+        </div>
+      </a>
+
+      <a class="overview-card" href="#gestinter">
+        <div class="overview-art overview-art--inter" aria-hidden="true">
+          <svg viewBox="0 0 320 180" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Engrenage -->
+            <g transform="translate(112 92)">
+              <path d="M42.0 -13.1 L55.3 -9.0 L55.3 9.0 L42.0 13.1 L41.7 14.1 L50.0 25.2 L39.4 39.7 L26.3 35.3 L25.4 35.9 L25.6 49.8 L8.6 55.3 L0.6 44.0 L-0.6 44.0 L-8.6 55.3 L-25.6 49.8 L-25.4 35.9 L-26.3 35.3 L-39.4 39.7 L-50.0 25.2 L-41.7 14.1 L-42.0 13.1 L-55.3 9.0 L-55.3 -9.0 L-42.0 -13.1 L-41.7 -14.1 L-50.0 -25.2 L-39.4 -39.7 L-26.3 -35.3 L-25.4 -35.9 L-25.6 -49.8 L-8.6 -55.3 L-0.6 -44.0 L0.6 -44.0 L8.6 -55.3 L25.6 -49.8 L25.4 -35.9 L26.3 -35.3 L39.4 -39.7 L50.0 -25.2 L41.7 -14.1 Z"
+                    fill="rgba(167,139,250,0.14)" stroke="#a78bfa" stroke-width="2"/>
+              <circle r="20" fill="rgba(167,139,250,0.25)" stroke="#a78bfa" stroke-width="2"/>
+              <circle r="7" fill="#a78bfa"/>
+            </g>
+            <!-- Fiche d'intervention avec liste de tâches -->
+            <rect x="182" y="46" width="96" height="88" rx="8" fill="rgba(96,165,250,0.08)" stroke="#60a5fa" stroke-width="2"/>
+            <rect x="214" y="38" width="32" height="14" rx="5" fill="#070d1a" stroke="#60a5fa" stroke-width="2"/>
+            <circle cx="200" cy="74" r="7" fill="rgba(34,211,238,0.35)" stroke="#22d3ee" stroke-width="2"/>
+            <path d="M196.5 74l2.5 2.5 4.5-5" stroke="#22d3ee" stroke-width="2"/>
+            <path d="M214 74h50" stroke="rgba(230,237,247,0.45)" stroke-width="3"/>
+            <circle cx="200" cy="96" r="7" fill="rgba(34,211,238,0.35)" stroke="#22d3ee" stroke-width="2"/>
+            <path d="M196.5 96l2.5 2.5 4.5-5" stroke="#22d3ee" stroke-width="2"/>
+            <path d="M214 96h38" stroke="rgba(230,237,247,0.45)" stroke-width="3"/>
+            <circle cx="200" cy="118" r="7" stroke="#a78bfa" stroke-width="2"/>
+            <path d="M214 118h44" stroke="rgba(230,237,247,0.25)" stroke-width="3" stroke-dasharray="2 6"/>
+            <!-- Étincelles décoratives -->
+            <circle cx="44" cy="38" r="2.5" fill="#22d3ee"/><circle cx="290" cy="30" r="2" fill="#a78bfa"/>
+            <circle cx="296" cy="150" r="2.5" fill="#22d3ee"/><circle cx="34" cy="148" r="2" fill="#a78bfa"/>
+          </svg>
+        </div>
+        <div class="overview-body">
+          <span class="overview-num">02</span>
+          <h2>GestInter</h2>
+          <p>Suivi des interventions du service informatique.</p>
+          <ul class="tag-list"><li class="tag">PHP</li><li class="tag">MySQL</li><li class="tag">Bootstrap</li></ul>
+        </div>
+      </a>
+
+      <a class="overview-card" href="#gestmateriel">
+        <div class="overview-art overview-art--materiel" aria-hidden="true">
+          <svg viewBox="0 0 320 180" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Écran de bureau -->
+            <rect x="48" y="40" width="108" height="72" rx="7" fill="rgba(96,165,250,0.10)" stroke="#60a5fa" stroke-width="2"/>
+            <rect x="57" y="49" width="90" height="54" rx="3" fill="rgba(96,165,250,0.18)"/>
+            <path d="M80 66h44M80 78h30" stroke="rgba(230,237,247,0.4)" stroke-width="3"/>
+            <path d="M102 112v14M82 128h40" stroke="#60a5fa" stroke-width="2"/>
+            <!-- Ordinateur portable -->
+            <rect x="180" y="62" width="82" height="52" rx="5" fill="rgba(34,211,238,0.10)" stroke="#22d3ee" stroke-width="2"/>
+            <rect x="188" y="70" width="66" height="36" rx="2" fill="rgba(34,211,238,0.20)"/>
+            <path d="M170 124h102l-8-10H178l-8 10Z" fill="rgba(34,211,238,0.14)" stroke="#22d3ee" stroke-width="2"/>
+            <!-- Étiquette d'inventaire avec code-barres -->
+            <rect x="118" y="134" width="84" height="30" rx="6" fill="#070d1a" stroke="#a78bfa" stroke-width="2"/>
+            <g stroke="#a78bfa" stroke-width="2">
+              <path d="M130 142v14M135 142v14M139 142v14M146 142v14M150 142v14M157 142v14M161 142v14M168 142v14M172 142v14M179 142v14M186 142v14"/>
+            </g>
+            <!-- Étincelles décoratives -->
+            <circle cx="34" cy="28" r="2.5" fill="#22d3ee"/><circle cx="292" cy="34" r="2" fill="#a78bfa"/>
+            <circle cx="290" cy="152" r="2.5" fill="#22d3ee"/><circle cx="30" cy="150" r="2" fill="#a78bfa"/>
+          </svg>
+        </div>
+        <div class="overview-body">
+          <span class="overview-num">03</span>
+          <h2>GestMateriel</h2>
+          <p>Inventaire du parc informatique et attributions.</p>
+          <ul class="tag-list"><li class="tag">PHP</li><li class="tag">MySQL</li><li class="tag">Python</li></ul>
+        </div>
+      </a>
+    </section>
+
+    <!-- ===================== PROJET 1 : GestConges ===================== -->
+    <article class="project-showcase reveal" id="gestconges">
+      <header class="showcase-head">
+        <span class="showcase-num">01</span>
+        <div>
+          <h2>GestConges</h2>
+          <p class="showcase-sub">Application de gestion des congés des agents de la mairie</p>
+        </div>
+      </header>
+
+      <ul class="meta-row">
+        <li><span>Type</span>Application web interne</li>
+        <li><span>Contexte</span>Stage 1<sup>re</sup> année</li>
+        <li><span>Complexité</span>Projet le plus avancé des trois</li>
+        <li><span>Hébergement</span>Réseau interne de la mairie</li>
+      </ul>
+
+      <div class="project-gallery">
+        <figure class="browser-frame">
+          <div class="browser-bar"><i></i><i></i><i></i></div>
+          <img src="img/projets/login_conges.png" alt="Page de connexion de GestConges" data-lightbox loading="lazy">
+          <figcaption>Page de connexion</figcaption>
+        </figure>
+        <figure class="browser-frame">
+          <div class="browser-bar"><i></i><i></i><i></i></div>
+          <img src="img/projets/dashboard_conges.png" alt="Tableau de bord de GestConges avec les compteurs de congés" data-lightbox loading="lazy">
+          <figcaption>Tableau de bord : compteurs CP, RTT, récupérations et compte épargne temps</figcaption>
+        </figure>
       </div>
 
-      <p class="project-lead">
-        Application de gestion des congés pour les agents de la mairie, avec plusieurs niveaux
-        de validation. Le projet le plus complexe des trois, et le dernier réalisé.
-      </p>
-
       <div class="project-grid">
-        <div>
+        <div class="project-block">
           <h3>Contexte &amp; objectifs</h3>
           <p>
             Le service avait besoin d'un outil pour centraliser les demandes de congés et leur
@@ -73,61 +190,79 @@
           </p>
         </div>
 
-        <div>
+        <div class="project-block">
+          <h3>Fonctionnalités principales</h3>
+          <ul class="feature-list">
+            <li>Espace personnel avec les compteurs de congés de chaque agent</li>
+            <li>Dépôt de demandes de congés, en demi-journées</li>
+            <li>Calendrier des absences (FullCalendar)</li>
+            <li>Circuit de validation et suivi des absences pour les responsables</li>
+            <li>Navigation et droits adaptés à 5 rôles : agent, responsable, RH, DGS, admin</li>
+          </ul>
+        </div>
+
+        <div class="project-block">
           <h3>Technologies utilisées</h3>
           <p>
-            PHP natif et MySQL, avec FullCalendar pour l'affichage du calendrier des congés.
-            Accès à la base via une fonction <code>getDB()</code> centralisée et une configuration
-            par constante <code>APP_URL</code>. Application hébergée sur le réseau interne de la mairie.
+            PHP natif et MySQL, avec FullCalendar pour l'affichage du calendrier. Accès à la base
+            via une fonction <code>getDB()</code> centralisée et une configuration par constante
+            <code>APP_URL</code>. Interface en CSS personnalisé.
           </p>
         </div>
 
-        <div>
-          <h3>Difficultés rencontrées</h3>
+        <div class="project-block">
+          <h3>Difficultés &amp; solutions</h3>
           <p>
-            Gérer 5 rôles différents (agent, responsable, RH, DGS, admin) avec un affichage et des
-            droits adaptés à chacun. Le calcul des congés en demi-journées a demandé plusieurs
-            itérations : une première version basée sur les heures s'est révélée trop complexe
-            à maintenir et a été remplacée.
-          </p>
-        </div>
-
-        <div>
-          <h3>Solutions apportées</h3>
-          <p>
-            Navigation et filtrage des données conditionnés par le rôle de l'utilisateur connecté.
-            Refonte du système de durée de congés sur la base de demi-journées, plus simple à
-            comprendre pour les utilisateurs et plus fiable à calculer.
+            Gérer 5 rôles avec un affichage et des droits propres à chacun : la navigation et le
+            filtrage des données dépendent du rôle de l'utilisateur connecté. Le calcul des congés a
+            aussi demandé plusieurs itérations : une première version basée sur les heures, trop
+            complexe à maintenir, a été remplacée par un système en demi-journées, plus simple et
+            plus fiable.
           </p>
         </div>
       </div>
 
-      <h3>Compétences développées</h3>
+      <h3 class="skills-title">Compétences développées</h3>
       <ul class="tag-list">
         <li class="tag">Conception de BDD multi-tables</li>
         <li class="tag">Gestion de droits par rôle</li>
-        <li class="tag">Intégration d'une librairie JS (FullCalendar)</li>
+        <li class="tag">Intégration d'une librairie JS</li>
         <li class="tag">Débogage (sessions, affichage conditionnel)</li>
       </ul>
     </article>
 
-    <!-- ===================== GestInter ===================== -->
-    <article class="project-card reveal" id="gestinter">
-      <div class="project-head">
-        <h2>GestInter</h2>
-        <ul class="tag-list">
-          <li class="tag">PHP</li>
-          <li class="tag">MySQL</li>
-          <li class="tag">Bootstrap</li>
-        </ul>
+    <!-- ===================== PROJET 2 : GestInter ===================== -->
+    <article class="project-showcase reveal" id="gestinter">
+      <header class="showcase-head">
+        <span class="showcase-num">02</span>
+        <div>
+          <h2>GestInter</h2>
+          <p class="showcase-sub">Application de suivi des interventions du service informatique</p>
+        </div>
+      </header>
+
+      <ul class="meta-row">
+        <li><span>Type</span>Application web interne</li>
+        <li><span>Contexte</span>Stage 1<sup>re</sup> année</li>
+        <li><span>Base de données</span>5 tables</li>
+        <li><span>Hébergement</span>VM sur le réseau local</li>
+      </ul>
+
+      <div class="project-gallery">
+        <figure class="browser-frame">
+          <div class="browser-bar"><i></i><i></i><i></i></div>
+          <img src="img/projets/login_inter.png" alt="Page de connexion de GestInter" data-lightbox loading="lazy">
+          <figcaption>Page de connexion</figcaption>
+        </figure>
+        <figure class="browser-frame">
+          <div class="browser-bar"><i></i><i></i><i></i></div>
+          <img src="img/projets/dashboard_inter.png" alt="Tableau de bord de GestInter avec les compteurs d'interventions" data-lightbox loading="lazy">
+          <figcaption>Tableau de bord : interventions reçues, en cours, résolues et clôturées</figcaption>
+        </figure>
       </div>
 
-      <p class="project-lead">
-        Application de suivi des interventions techniques du service informatique.
-      </p>
-
       <div class="project-grid">
-        <div>
+        <div class="project-block">
           <h3>Contexte &amp; objectifs</h3>
           <p>
             Le service avait besoin de tracer les interventions réalisées par les techniciens
@@ -135,7 +270,17 @@
           </p>
         </div>
 
-        <div>
+        <div class="project-block">
+          <h3>Fonctionnalités principales</h3>
+          <ul class="feature-list">
+            <li>Création d'une nouvelle intervention</li>
+            <li>Suivi par statut : reçue, en cours, résolue, clôturée</li>
+            <li>Liste, détail, modification et suppression des interventions</li>
+            <li>Changement de mot de passe et authentification sécurisée</li>
+          </ul>
+        </div>
+
+        <div class="project-block">
           <h3>Technologies utilisées</h3>
           <p>
             PHP natif (sans framework), MySQL/MariaDB, Bootstrap pour l'interface. Développement
@@ -143,25 +288,18 @@
           </p>
         </div>
 
-        <div>
-          <h3>Difficultés rencontrées</h3>
+        <div class="project-block">
+          <h3>Difficultés &amp; solutions</h3>
           <p>
-            Sécuriser l'authentification des utilisateurs et faire fonctionner correctement
-            l'application une fois déployée sur le réseau local, et non plus en local sur mon poste.
-          </p>
-        </div>
-
-        <div>
-          <h3>Solutions apportées</h3>
-          <p>
-            Mise en place d'une authentification avec mots de passe hashés en bcrypt, et
-            configuration d'une constante d'URL adaptée à l'accès réseau. Déploiement sur la VM
-            via clé USB, avec une documentation Word pour expliquer l'installation.
+            Sécuriser l'authentification des utilisateurs : mots de passe hashés en bcrypt. Faire
+            fonctionner l'application une fois déployée sur le réseau local (et non plus sur mon
+            poste) : configuration d'une constante d'URL adaptée. Déploiement sur la VM via clé USB,
+            avec une documentation Word pour expliquer l'installation.
           </p>
         </div>
       </div>
 
-      <h3>Compétences développées</h3>
+      <h3 class="skills-title">Compétences développées</h3>
       <ul class="tag-list">
         <li class="tag">Authentification sécurisée (bcrypt)</li>
         <li class="tag">Conception de BDD (5 tables)</li>
@@ -170,23 +308,38 @@
       </ul>
     </article>
 
-    <!-- ===================== GestMateriel ===================== -->
-    <article class="project-card reveal" id="gestmateriel">
-      <div class="project-head">
-        <h2>GestMateriel</h2>
-        <ul class="tag-list">
-          <li class="tag">PHP</li>
-          <li class="tag">MySQL</li>
-          <li class="tag">Python</li>
-        </ul>
+    <!-- ===================== PROJET 3 : GestMateriel ===================== -->
+    <article class="project-showcase reveal" id="gestmateriel">
+      <header class="showcase-head">
+        <span class="showcase-num">03</span>
+        <div>
+          <h2>GestMateriel</h2>
+          <p class="showcase-sub">Application de gestion du parc informatique et des attributions</p>
+        </div>
+      </header>
+
+      <ul class="meta-row">
+        <li><span>Type</span>Application web interne</li>
+        <li><span>Contexte</span>Stage 1<sup>re</sup> année</li>
+        <li><span>Base de données</span>3 tables</li>
+        <li><span>Données</span>193 matériels, 133 attributions</li>
+      </ul>
+
+      <div class="project-gallery">
+        <figure class="browser-frame">
+          <div class="browser-bar"><i></i><i></i><i></i></div>
+          <img src="img/projets/login_materiel.png" alt="Page de connexion de GestMateriel" data-lightbox loading="lazy">
+          <figcaption>Page de connexion</figcaption>
+        </figure>
+        <figure class="browser-frame">
+          <div class="browser-bar"><i></i><i></i><i></i></div>
+          <img src="img/projets/dashboard_materiel.png" alt="Tableau de bord de GestMateriel avec l'état du parc informatique" data-lightbox loading="lazy">
+          <figcaption>Tableau de bord : état du parc (en service, en stock, en panne, réformés)</figcaption>
+        </figure>
       </div>
 
-      <p class="project-lead">
-        Application de gestion du parc informatique et des attributions de matériel aux agents.
-      </p>
-
       <div class="project-grid">
-        <div>
+        <div class="project-block">
           <h3>Contexte &amp; objectifs</h3>
           <p>
             Le parc matériel de la mairie était suivi dans un fichier Excel. L'objectif était de
@@ -194,7 +347,17 @@
           </p>
         </div>
 
-        <div>
+        <div class="project-block">
+          <h3>Fonctionnalités principales</h3>
+          <ul class="feature-list">
+            <li>Tableau de bord avec l'état du parc : en service, en stock, en panne, réformés</li>
+            <li>Liste des matériels (nom, marque, type, état, date d'ajout)</li>
+            <li>Suivi des attributions à la mairie et aux organismes externes</li>
+            <li>Ajout de nouveau matériel</li>
+          </ul>
+        </div>
+
+        <div class="project-block">
           <h3>Technologies utilisées</h3>
           <p>
             PHP natif, MySQL/MariaDB pour une base à 3 tables. Un script Python avec la librairie
@@ -202,24 +365,18 @@
           </p>
         </div>
 
-        <div>
-          <h3>Difficultés rencontrées</h3>
+        <div class="project-block">
+          <h3>Difficultés &amp; solutions</h3>
           <p>
             Reprendre proprement des données réelles déjà existantes (environ 193 matériels et
-            133 attributions) sans erreur ni doublon lors de l'import dans la base.
-          </p>
-        </div>
-
-        <div>
-          <h3>Solutions apportées</h3>
-          <p>
-            Script Python dédié à l'import, qui lit le fichier Excel et insère les données dans
-            la base MySQL. Application documentée avec un fichier Word, comme pour GestInter.
+            133 attributions) sans erreur ni doublon lors de l'import. Un script Python dédié lit le
+            fichier Excel et insère les données dans la base MySQL. L'application est documentée avec
+            un fichier Word, comme GestInter.
           </p>
         </div>
       </div>
 
-      <h3>Compétences développées</h3>
+      <h3 class="skills-title">Compétences développées</h3>
       <ul class="tag-list">
         <li class="tag">Scripting Python (openpyxl)</li>
         <li class="tag">Import / migration de données réelles</li>
@@ -227,6 +384,12 @@
       </ul>
     </article>
   </main>
+
+  <!-- Fenêtre d'agrandissement des captures d'écran -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Capture d'écran agrandie" hidden>
+    <button class="lightbox-close" id="lightbox-close" aria-label="Fermer">&times;</button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
 
   <footer class="site-footer">
     <p>2026 © Alexandre Codeco Cerqueira - BTS SIO SLAM</p>

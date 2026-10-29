@@ -733,6 +733,262 @@ a { color: inherit; text-decoration: none; }
   font-size: 0.85em;
 }
 
+/* ---------- Page Projets : vue d'ensemble (3 cartes) ---------- */
+.project-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.overview-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.overview-card:hover {
+  border-color: var(--cyan);
+  box-shadow: 0 0 30px rgba(34, 211, 238, 0.15);
+  transform: translateY(-4px);
+}
+
+.overview-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: top;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Illustration en haut de chaque carte (remplace la capture d'écran) */
+.overview-art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  background-image:
+    radial-gradient(rgba(230, 237, 247, 0.07) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(34, 211, 238, 0.12), rgba(167, 139, 250, 0.10));
+  background-size: 22px 22px, 100% 100%;
+}
+
+.overview-art--inter {
+  background-image:
+    radial-gradient(rgba(230, 237, 247, 0.07) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(167, 139, 250, 0.14), rgba(96, 165, 250, 0.10));
+}
+
+.overview-art--materiel {
+  background-image:
+    radial-gradient(rgba(230, 237, 247, 0.07) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(96, 165, 250, 0.14), rgba(34, 211, 238, 0.10));
+}
+
+.overview-art svg {
+  width: 88%;
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.3));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.overview-card:hover .overview-art svg {
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 16px rgba(34, 211, 238, 0.55));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overview-art svg, .overview-card:hover .overview-art svg { transition: none; transform: none; }
+}
+
+.overview-body { padding: 1.2rem 1.4rem 1.4rem; }
+
+.overview-num {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--cyan);
+}
+
+.overview-body h2 { margin: 0.2rem 0 0.4rem; font-size: 1.25rem; }
+.overview-body p { margin: 0 0 0.9rem; color: var(--muted); font-size: 0.92rem; }
+
+/* ---------- Page Projets : fiche détaillée d'un projet ---------- */
+.project-showcase {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  scroll-margin-top: 90px;
+}
+
+.showcase-head {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.showcase-num {
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--violet), var(--cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.showcase-head h2 { margin: 0; font-size: 1.7rem; }
+.showcase-sub { margin: 0.2rem 0 0; color: var(--muted); }
+
+/* Ligne d'infos clés (type, contexte, ...) */
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  list-style: none;
+  margin: 0 0 1.8rem;
+  padding: 0;
+}
+
+.meta-row li {
+  display: flex;
+  flex-direction: column;
+  padding: 0.55rem 0.9rem;
+  font-size: 0.85rem;
+  background: rgba(34, 211, 238, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.meta-row li span {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+/* Galerie de captures d'écran dans des "fenêtres de navigateur" */
+.project-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.browser-frame {
+  margin: 0;
+  background: #0b1526;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+}
+
+.browser-bar {
+  display: flex;
+  gap: 6px;
+  padding: 0.55rem 0.8rem;
+  background: rgba(34, 211, 238, 0.07);
+  border-bottom: 1px solid var(--border);
+}
+
+.browser-bar i { width: 9px; height: 9px; border-radius: 50%; background: rgba(230, 237, 247, 0.25); }
+
+.browser-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: zoom-in;
+  transition: opacity 0.2s;
+}
+
+.browser-frame img:hover { opacity: 0.88; }
+
+.browser-frame figcaption {
+  padding: 0.7rem 0.9rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+.project-block h3 { margin: 0 0 0.5rem; font-size: 0.95rem; color: var(--cyan); }
+.project-block p { margin: 0; }
+
+.feature-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.feature-list li {
+  position: relative;
+  padding-left: 1.3rem;
+  margin-bottom: 0.4rem;
+}
+
+.feature-list li::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  color: var(--cyan);
+  font-weight: 700;
+}
+
+.skills-title { margin: 0.5rem 0 0.8rem; font-size: 0.95rem; color: var(--cyan); }
+
+/* ---------- Fenêtre d'agrandissement des captures (lightbox) ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(4, 8, 16, 0.92);
+  cursor: zoom-out;
+}
+
+.lightbox[hidden] { display: none; }
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 0 60px rgba(34, 211, 238, 0.2);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.4rem;
+  font-size: 2.2rem;
+  line-height: 1;
+  color: var(--text);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.lightbox-close:hover { color: var(--cyan); }
+
+@media (max-width: 640px) {
+  .project-showcase { padding: 1.3rem; }
+  .project-gallery { grid-template-columns: 1fr; }
+  .showcase-num { font-size: 2rem; }
+}
+
 /* ---------- Petit bouton (lien "voir le certificat") ---------- */
 .btn-small { padding: 0.5rem 1rem; font-size: 0.68rem; }
 
