@@ -1143,11 +1143,22 @@ a { color: inherit; text-decoration: none; }
   100% { transform: translate(-1px, 2px); }
 }
 
-/* ---------- Rangée d'icônes sociales ---------- */
+/* ---------- Rangée d'icônes sociales (icône + étiquette dessous) ---------- */
 .social-row {
   display: flex;
-  gap: 0.9rem;
+  flex-wrap: wrap;
+  gap: 1.4rem;
   margin-top: 1.8rem;
+}
+
+.social-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  min-width: 52px;
+  color: var(--muted);
+  transition: color 0.2s, transform 0.2s;
 }
 
 .social-icon {
@@ -1155,21 +1166,38 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   justify-content: center;
   width: 42px; height: 42px;
-  color: var(--muted);
   background: rgba(34, 211, 238, 0.04);
   border: 1px solid rgba(230, 237, 247, 0.25);
   border-radius: 10px;
-  transition: color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .social-icon svg { width: 20px; height: 20px; }
 
-.social-icon:hover {
+/* Étiquette : même style que les liens du menu (monospace, majuscules espacées) */
+.social-label {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+
+.social-item:hover,
+.social-item:focus-visible {
   color: var(--cyan);
-  border-color: var(--cyan);
-  box-shadow: 0 0 18px rgba(34, 211, 238, 0.3);
   transform: translateY(-3px);
 }
+
+.social-item:hover .social-icon,
+.social-item:focus-visible .social-icon {
+  border-color: var(--cyan);
+  box-shadow: 0 0 18px rgba(34, 211, 238, 0.3);
+}
+
+.social-item:hover .social-label,
+.social-item:focus-visible .social-label { color: var(--cyan); }
 
 /* ---------- Terminal de boot (accueil) ---------- */
 .boot-terminal {
